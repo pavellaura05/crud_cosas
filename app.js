@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authRoutes);
 app.use('/muebles', mueblesRoutes);
 app.use('/categorias', categoriasRoutes);
+app.use('/usuarios', usuariosRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {
