@@ -8,6 +8,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+
       },
       nombre: {
         type: Sequelize.STRING
@@ -16,6 +17,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       precio: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
