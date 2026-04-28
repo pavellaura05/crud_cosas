@@ -3,6 +3,8 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const mueblesRoutes = require('./routes/mueblesRoutes');
 const categoriasRoutes = require('./routes/categoriasRoutes');
+const usuariosRoutes = require('./routes/usuariosRoutes');
+const path = require('path');
 
 const app = express();
 
@@ -11,15 +13,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Rutas
 app.use('/auth', authRoutes);
 app.use('/muebles', mueblesRoutes);
 app.use('/categorias', categoriasRoutes);
 app.use('/usuarios', usuariosRoutes);
 
-// Ruta de prueba
+// Ruta principal - servir frontend
 app.get('/', (req, res) => {
-  res.json({ message: 'API REST funcionando correctamente' });
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Manejo de errores 404
